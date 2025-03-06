@@ -77,6 +77,24 @@
         button[type="submit"]:hover {
             background-color: #45a049;
         }
+
+        #result {
+            display: none;
+            /* Initially hide the result */
+            width: 90%;
+            max-width: 500px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px black;
+            text-align: left;
+        }
+
+        #result p {
+            text-align: left;
+            margin-left: 20px;
+        }
     </style>
 </head>
 
@@ -84,23 +102,13 @@
     <h1>TOC-FORM</h1>
     <p>A form validation project using Regular expression.</p>
 
-    <form action="index.php" method="post">
+    <form id="myForm">
         <label for="name">Name:</label>
         <input type="text" name="name" id="name" required placeholder="John Doe">
         <br>
-        <!-- <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required placeholder="john.doe@example.com">
-        <br> -->
         <label for="phone">Phone:</label>
         <input type="tel" name="phone" id="phone" required pattern="^\d{10}$" placeholder="1234567890">
         <br>
-        <!-- <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-        <br>
-        <label for="password2">Confirm Password:</label>
-        <input type="password" name="password2" id="password2" required>
-        <br> -->
-        <!-- hex code, dob, software license code, url, vehicle registration number, credit card, postcode, book isbn -->
         <label for="hex">Hex Code:</label>
         <input type="text" pattern="^[0-9A-Fa-f]{6}$" name="hex" id="hex" required placeholder="FF0000">
         <br>
@@ -129,8 +137,56 @@
         <label for="isbn">Book ISBN:</label>
         <input type="text" pattern="^\d{13}$" name="isbn" id="isbn" required placeholder="9781234567890">
         <br>
-        <button type="submit" name="submit">Submit</button>
+        <button type="submit">Submit</button>
     </form>
+
+    <div id="result">
+        <h2>Entered Information:</h2>
+        <p id="resultName"></p>
+        <p id="resultPhone"></p>
+        <p id="resultHex"></p>
+        <p id="resultDob"></p>
+        <p id="resultLicense"></p>
+        <p id="resultUrl"></p>
+        <p id="resultVehicle"></p>
+        <p id="resultCredit"></p>
+        <p id="resultPostcode"></p>
+        <p id="resultIsbn"></p>
+    </div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get form data
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const hex = document.getElementById('hex').value;
+            const dob = document.getElementById('dob').value;
+            const license = document.getElementById('license').value;
+            const url = document.getElementById('url').value;
+            const vehicle = document.getElementById('vehicle').value;
+            const credit = document.getElementById('credit').value;
+            const postcode = document.getElementById('postcode').value;
+            const isbn = document.getElementById('isbn').value;
+
+            // Display results
+            document.getElementById('resultName').textContent = 'Name: ' + name;
+            document.getElementById('resultPhone').textContent = 'Phone: ' + phone;
+            document.getElementById('resultHex').textContent = 'Hex Code: ' + hex;
+            document.getElementById('resultDob').textContent = 'Date of Birth: ' + dob;
+            document.getElementById('resultLicense').textContent = 'License: ' + license;
+            document.getElementById('resultUrl').textContent = 'URL: ' + url;
+            document.getElementById('resultVehicle').textContent = 'Vehicle: ' + vehicle;
+            document.getElementById('resultCredit').textContent = 'Credit Card: ' + credit;
+            document.getElementById('resultPostcode').textContent = 'Postcode: ' + postcode;
+            document.getElementById('resultIsbn').textContent = 'ISBN: ' + isbn;
+
+            // Hide form and show result
+            document.getElementById('myForm').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+        });
+    </script>
 </body>
 
 </html>
