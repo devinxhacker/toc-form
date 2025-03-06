@@ -86,19 +86,48 @@
 
     <form action="index.php" method="post">
         <label for="name">Name:</label>
-        <input type="text" name="name" id="name" required>
+        <input type="text" name="name" id="name" required placeholder="John Doe">
         <br>
         <label for="email">Email:</label>
-        <input type="email" name="email" id="email" required>
+        <input type="email" name="email" id="email" required placeholder="john.doe@example.com">
         <br>
         <label for="phone">Phone:</label>
-        <input type="tel" name="phone" id="phone" required>
+        <input type="tel" name="phone" id="phone" required pattern="^\d{10}$" placeholder="1234567890">
         <br>
         <label for="password">Password:</label>
         <input type="password" name="password" id="password" required>
         <br>
         <label for="password2">Confirm Password:</label>
         <input type="password" name="password2" id="password2" required>
+        <br>
+        <!-- hex code, dob, software license code, url, vehicle registration number, credit card, postcode, book isbn -->
+        <label for="hex">Hex Code:</label>
+        <input type="text" pattern="^[0-9A-Fa-f]{6}$" name="hex" id="hex" required placeholder="FF0000">
+        <br>
+        <label for="dob">Date of Birth:</label>
+        <input type="text" pattern="^\d{4}-\d{2}-\d{2}$" name="dob" id="dob" required placeholder="1990-01-01">
+        <br>
+        <label for="license">Software License Code:</label>
+        <input type="text" pattern="^[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}$" name="license" id="license" required
+            placeholder="XXXX-XXXX-XXXX">
+        <br>
+        <label for="url">URL:</label>
+        <input type="text"
+            pattern="^(http(s)?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$"
+            name="url" id="url" required placeholder="http://example.com">
+        <br>
+        <label for="vehicle">Vehicle Number:</label>
+        <input type="text" pattern="^[A-Za-z]{2}\d{2}[A-Za-z]{2}\d{4}$" name="vehicle" id="vehicle" required
+            placeholder="MH12AB1234">
+        <br>
+        <label for="credit">Credit Card:</label>
+        <input type="text" pattern="^\d{16}$" name="credit" id="credit" required placeholder="1234 5678 9012 3456">
+        <br>
+        <label for="postcode">Postcode:</label>
+        <input type="text" pattern="^\d{6}$" name="postcode" id="postcode" required placeholder="123456">
+        <br>
+        <label for="isbn">Book ISBN:</label>
+        <input type="text" pattern="^\d{13}$" name="isbn" id="isbn" required placeholder="9781234567890">
         <br>
         <button type="submit" name="submit">Submit</button>
     </form>
