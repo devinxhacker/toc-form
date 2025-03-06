@@ -48,10 +48,7 @@
             margin-left: 20px;
         }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="password"] {
+        input {
             display: block;
             width: 90%;
             padding: 10px;
@@ -104,38 +101,40 @@
 
     <form id="myForm">
         <label for="name">Name:</label>
-        <input type="text" name="name" id="name" required placeholder="John Doe">
+        <input type="text" name="name" id="name" pattern="^[A-Z]{1}[a-z]{2,30} [A-Z]{1}[a-z]{2,30}" required
+            placeholder="John Doe">
         <br>
         <label for="phone">Phone:</label>
-        <input type="tel" name="phone" id="phone" required pattern="^\d{10}$" placeholder="1234567890">
+        <input type="tel" name="phone" id="phone" required pattern="^(\+91-|\+91|0)?[6-9]\d{9}$"
+            placeholder="+91-1234567890">
         <br>
         <label for="hex">Hex Code:</label>
-        <input type="text" pattern="^[0-9A-Fa-f]{6}$" name="hex" id="hex" required placeholder="FF0000">
+        <input type="text" pattern="^#[0-9A-Fa-f]{6}$" name="hex" id="hex" required placeholder="#FF0000">
         <br>
         <label for="dob">Date of Birth:</label>
         <input type="text" pattern="^\d{4}-\d{2}-\d{2}$" name="dob" id="dob" required placeholder="1990-01-01">
         <br>
         <label for="license">Software License Code:</label>
-        <input type="text" pattern="^[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}$" name="license" id="license" required
-            placeholder="XXXX-XXXX-XXXX">
+        <input type="text" pattern="^(?:[2-9CDGJ-MPR-TVWXY]{5}-){4}[2-9CDGJ-MPR-TVWXY]{5}$" name="license" id="license"
+            required placeholder="XXXXX-XXXXX-XXXXX-XXXXX-XXXXX">
         <br>
-        <label for="url">URL:</label>
-        <input type="text"
-            pattern="^(http(s)?:\/\/)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)$"
-            name="url" id="url" required placeholder="http://example.com">
+        <label for="url">LinkedIn profile url:</label>
+        <input type="text" pattern="^https:\/\/www\.linkedin\.com\/in\/[a-z0-9_\-]{3,30}$" name="url" id="url" required
+            placeholder="https://www.linkedin.com/in/johndoe">
         <br>
         <label for="vehicle">Vehicle Number:</label>
-        <input type="text" pattern="^[A-Za-z]{2}\d{2}[A-Za-z]{2}\d{4}$" name="vehicle" id="vehicle" required
+        <input type="text" pattern="^[A-Z]{2}\s?\d{2}\s?[A-Z]{1,3}\s?\d{4}$" name="vehicle" id="vehicle" required
             placeholder="MH12AB1234">
         <br>
         <label for="credit">Credit Card:</label>
-        <input type="text" pattern="^\d{16}$" name="credit" id="credit" required placeholder="1234 5678 9012 3456">
+        <input type="text" pattern="^[0-9]{4}[-\s]?[0-9]{4}[-\s]?[0-9]{4}[-\s]?[0-9]{4}$" name="credit" id="credit"
+            required placeholder="1234-5678-1234-5678">
         <br>
         <label for="postcode">Postcode:</label>
         <input type="text" pattern="^\d{6}$" name="postcode" id="postcode" required placeholder="123456">
         <br>
         <label for="isbn">Book ISBN:</label>
-        <input type="text" pattern="^\d{13}$" name="isbn" id="isbn" required placeholder="9781234567890">
+        <input type="text" pattern="^97[89]\d{10}$" name="isbn" id="isbn" required placeholder="9781234567890">
         <br>
         <button type="submit">Submit</button>
     </form>
@@ -176,7 +175,7 @@
             document.getElementById('resultHex').textContent = 'Hex Code: ' + hex;
             document.getElementById('resultDob').textContent = 'Date of Birth: ' + dob;
             document.getElementById('resultLicense').textContent = 'License: ' + license;
-            document.getElementById('resultUrl').textContent = 'URL: ' + url;
+            document.getElementById('resultUrl').textContent = 'LinkedIn Profile URL: ' + url;
             document.getElementById('resultVehicle').textContent = 'Vehicle: ' + vehicle;
             document.getElementById('resultCredit').textContent = 'Credit Card: ' + credit;
             document.getElementById('resultPostcode').textContent = 'Postcode: ' + postcode;
