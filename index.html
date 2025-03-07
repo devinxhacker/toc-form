@@ -226,7 +226,7 @@
                 document.getElementById('licenseError').style.display = 'none';
             }
 
-            if (!/https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9_\-]{3,30}$/.test(url.value)) {
+            if (!/^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9_\-]{3,30}$/.test(url.value)) {
                 document.getElementById('urlError').innerHTML = 'LinkedIn profile url should contain https://www.linkedin.com/in/ followed by 3-30 characters';
                 document.getElementById('urlError').style.display = 'block';
                 url.scrollIntoView({ behavior: "smooth" });
@@ -281,6 +281,9 @@
                 document.getElementById('isbnError').style.display = 'block';
                 isbn.scrollIntoView({ behavior: "smooth" });
                 valid = false;
+            }
+            else {
+                document.getElementById('isbnError').style.display = 'none';
             }
 
             if (valid) {
